@@ -3,7 +3,9 @@ import React from "react";
 function Login(props) {
   return (
     <div>
-      <button> Login </button>
+      <a href={process.env.REACT_APP_LOGIN}>
+        <button> Login </button>
+      </a>
     </div>
   );
 }
