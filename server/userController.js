@@ -2,6 +2,7 @@ const updateProfile = (req, res) => {
   console.log(
     req.body.firstname,
     req.body.lastname,
+    req.body.phone,
     req.body.email,
     req.body.bio,
     req.user.authid
@@ -11,11 +12,12 @@ const updateProfile = (req, res) => {
     .updateProfile(
       req.body.firstname,
       req.body.lastname,
+      req.body.phone,
       req.body.email,
       req.body.bio,
       req.user.authid
     )
-    .then(user => res.status(200).json())
+    .then(user => res.status(200).json(user))
     .catch(err => res.status(500).json(err));
 };
 

@@ -9,5 +9,6 @@ export default (
   <Switch>
     <Route exact path="/" component={Landing} />
     <Route path="/profileinfo" component={ProfileInfo} />
+    <Route path="/profilepage" component={ProfilePage} />
   </Switch>
 );

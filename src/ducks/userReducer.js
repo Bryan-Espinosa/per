@@ -22,13 +22,13 @@ export function getUser() {
   };
 }
 
-export function updateProfile(firstname, lastname, email, bio) {
-  console.log(firstname, lastname, email, bio);
+export function updateProfile(firstname, lastname, phone, email, bio) {
+  console.log(firstname, lastname, phone, email, bio);
 
   return {
     type: UPDATE_PROFILE,
     payload: axios
-      .put("/api/updateProfile", { firstname, lastname, email, bio })
+      .put("/api/updateProfile", { firstname, lastname, phone, email, bio })
       .then(results => {
         return results;
       })

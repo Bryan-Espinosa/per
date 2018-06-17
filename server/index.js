@@ -7,8 +7,12 @@ const session = require("express-session");
 const passport = require("passport");
 const { logout, Strategy, getUser } = require(`${__dirname}/authController`);
 const { updateProfile } = require(`${__dirname}/userController`);
-// const Auth0Strategy = require("passport-auth0");
-// const { strategy, logout } = require(`${__dirname}/authcontroller`);
+const {
+  getJobs,
+  appJobs,
+  getAppJobs,
+  deleteJobs
+} = require(`${__dirname}/jobsController`);
 
 const port = process.env.PORT || 3001;
 const app = express();
@@ -43,13 +47,11 @@ passport.serializeUser((user, done) => {
           .addUserByAuthID([user.name.givenName, user.name.familyName, user.id])
           .then(res => {
             return done(null, res[0]);
-          })
-          .catch(err => console.log(err));
+          });
       } else {
         return done(null, response[0]);
       }
-    })
-    .catch(err => console.log(err));
+    });
 });
 passport.deserializeUser((user, done) => {
   return done(null, user);
@@ -65,6 +67,12 @@ app.get(
 app.get("/logout", logout);
 app.get("/api/getUser", getUser);
 app.get("/api/test", (req, res, next) => console.log("hit"));
+app.get("/api/getJobs", getJobs);
+app.get("/api/getAppJobs", getAppJobs);
+
+app.post("/api/appJobs", appJobs);
+
+app.delete("/api/deleteJobs/:jobid", deleteJobs);
 
 app.put("/api/updateProfile", updateProfile);
 
