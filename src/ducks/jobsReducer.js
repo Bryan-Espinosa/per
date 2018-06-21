@@ -8,6 +8,7 @@ const DELETE_JOBS = "DELETE_JOBS";
 const intialState = {
   jobs: [],
   appJobs: [],
+  appliedJob: {},
   isLoading: false
 };
 
@@ -22,11 +23,11 @@ export function getJobs() {
       .catch(err => console.log(err))
   };
 }
-export function appJobs(jobid, userid) {
+export function appJobs(jobid) {
   return {
     type: APP_JOBS,
     payload: axios
-      .post("/api/appJobs", { jobid, userid })
+      .post("/api/appJobs", { jobid })
       .then(results => {
         return results.data;
         console.log(results);
@@ -40,7 +41,8 @@ export function getAppJobs() {
     payload: axios
       .get("/api/getAppJobs")
       .then(results => {
-        return results.data;
+        console.log(results.data);
+        return results;
       })
       .catch(err => console.log(err))
   };
@@ -66,10 +68,18 @@ export default function jobsReducer(state = intialState, action) {
       return { ...state, isLoading: true };
     case `${GET_JOBS}_FULFILLED`:
       return { ...state, isLoading: false, jobs: action.payload };
-    case `${APP_JOBS}_FULFILLED`:
-    case `${GET_APP_JOBS}_FULFILLED`:
+
     case `${DELETE_JOBS}_FULFILLED`:
       return { ...state, isLoading: false, appJobs: action.payload };
+    case `${APP_JOBS}_FULFILLED`:
+      console.log(action.type, action.payload);
+
+      return { ...state, isLoading: false, appliedJob: action.payload };
+    case `${GET_APP_JOBS}_FULFILLED`:
+      console.log(action.type, action.payload);
+
+      return { ...state, isLoading: false, appJobs: action.payload.data };
+
     default:
       return state;
   }

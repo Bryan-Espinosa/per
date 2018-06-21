@@ -1,11 +1,10 @@
+import "./reset.css";
 import React, { Component } from "react";
 import axios from "axios";
 import routes from "./routes";
 import { getUser } from "./ducks/userReducer";
 import { getJobs, getAppJobs } from "./ducks/jobsReducer";
 import { connect } from "react-redux";
-
-import "./App.css";
 
 class App extends Component {
   componentDidMount() {
@@ -21,8 +20,6 @@ class App extends Component {
     this.props.getJobs();
   }
   render() {
-    console.log("jeeeeeeer", this.props.userReducer.user);
-
     return <div className="App">{routes}</div>;
   }
 }

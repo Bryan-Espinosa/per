@@ -23,117 +23,121 @@ class ProfileInfo extends Component {
     console.log(this.props);
 
     return (
-      <ProfileForm>
+      <ProfDisplay>
         <Navbar />
-        {this.props.userReducer.user &&
-        this.props.userReducer.user.firstname &&
-        !this.state.editing ? (
-          <p>
-            {this.props.userReducer.user.firstname}
-            {""}
-            {this.props.userReducer.user.lastname}
-          </p>
-        ) : (
-          <div>
-            <p>First Name:</p>
-            <input
-              name="firstname"
-              value={this.state.firstname}
-              onChange={this.handleinput}
-            />
-          </div>
-        )}
-
-        {this.props.userReducer.user &&
-        this.props.userReducer.user.lastname &&
-        !this.state.editing ? null : (
-          <div>
-            <p>Last Name:</p>
-            <input
-              name="lastname"
-              value={this.state.lastname}
-              onChange={this.handleinput}
-            />
-          </div>
-        )}
-        {this.props.userReducer.user &&
-        this.props.userReducer.user.phone &&
-        !this.state.editing ? (
-          <p>{this.props.userReducer.user.phone}</p>
-        ) : (
-          <div>
-            <p>phone:</p>
-            <input
-              name="phone"
-              value={this.state.phone}
-              onChange={this.handleinput}
-            />
-          </div>
-        )}
-
-        {this.props.userReducer.user &&
-        this.props.userReducer.user.email &&
-        !this.state.editing ? (
-          <p>{this.props.userReducer.user.email}</p>
-        ) : (
-          <div>
-            <p>email:</p>
-            <input
-              name="email"
-              value={this.state.email}
-              onChange={this.handleinput}
-            />
-          </div>
-        )}
-
-        {this.props.userReducer.user &&
-        this.props.userReducer.user.bio &&
-        !this.state.editing ? (
-          <p>{this.props.userReducer.user.bio}</p>
-        ) : (
-          <div>
-            <p>Bio:</p>
-            <input
-              name="bio"
-              value={this.state.bio}
-              onChange={this.handleinput}
-            />
-          </div>
-        )}
-        <div>
-          {!this.state.editing ? null : (
-            <button
-              onClick={() =>
-                this.props
-                  .updateProfile(
-                    this.state.firstname ||
-                      this.props.userReducer.user.firstname,
-                    this.state.lastname || this.props.userReducer.user.lastname,
-                    this.state.phone || this.props.userReducer.user.phone,
-                    this.state.email || this.props.userReducer.user.email,
-                    this.state.bio || this.props.userReducer.user.bio
-                  )
-                  .then(() => this.props.getUser())
-                  .then(() => this.setState({ editing: false }))
-              }
-            >
-              Submit
-            </button>
+        <div className="fieldbox">
+          {this.props.userReducer.user &&
+          this.props.userReducer.user.firstname &&
+          !this.state.editing ? (
+            <h1>
+              {this.props.userReducer.user.lastname}
+              {"  ,  "}
+              {this.props.userReducer.user.firstname}
+            </h1>
+          ) : (
+            <div className="NameField">
+              <p>First Name:</p>
+              <input
+                name="firstname"
+                value={this.state.firstname}
+                onChange={this.handleinput}
+              />
+            </div>
           )}
 
-          <button
-            onClick={() => this.setState({ editing: !this.state.editing })}
-          >
-            Edit
-          </button>
-          <a href={process.env.REACT_APP_LOGOUT}>
-            <button> Logout </button>
-          </a>
+          {this.props.userReducer.user &&
+          this.props.userReducer.user.lastname &&
+          !this.state.editing ? null : (
+            <div className="NameField">
+              <p>Last Name:</p>
+              <input
+                name="lastname"
+                value={this.state.lastname}
+                onChange={this.handleinput}
+              />
+            </div>
+          )}
+          {this.props.userReducer.user &&
+          this.props.userReducer.user.phone &&
+          !this.state.editing ? (
+            <h2>{this.props.userReducer.user.phone}</h2>
+          ) : (
+            <div className="phonefield">
+              <p>phone:</p>
+              <input
+                name="phone"
+                value={this.state.phone}
+                onChange={this.handleinput}
+              />
+            </div>
+          )}
+
+          {this.props.userReducer.user &&
+          this.props.userReducer.user.email &&
+          !this.state.editing ? (
+            <h3>{this.props.userReducer.user.email}</h3>
+          ) : (
+            <div className="EmailField">
+              <p>email:</p>
+              <input
+                name="email"
+                value={this.state.email}
+                onChange={this.handleinput}
+              />
+            </div>
+          )}
+          {this.props.userReducer.user &&
+          this.props.userReducer.user.bio &&
+          !this.state.editing ? (
+            <h4>{this.props.userReducer.user.bio}</h4>
+          ) : (
+            <div className="BioField">
+              <p>Bio:</p>
+              <input
+                name="bio"
+                value={this.state.bio}
+                onChange={this.handleinput}
+              />
+            </div>
+          )}
+        </div>
+        <div className="ButtonBox">
+          {!this.state.editing ? null : (
+            <p>
+              <button
+                onClick={() =>
+                  this.props
+                    .updateProfile(
+                      this.state.firstname ||
+                        this.props.userReducer.user.firstname,
+                      this.state.lastname ||
+                        this.props.userReducer.user.lastname,
+                      this.state.phone || this.props.userReducer.user.phone,
+                      this.state.email || this.props.userReducer.user.email,
+                      this.state.bio || this.props.userReducer.user.bio
+                    )
+                    .then(() => this.props.getUser())
+                    .then(() => this.setState({ editing: false }))
+                }
+              >
+                Submit
+              </button>
+            </p>
+          )}
+          <p>
+            <button
+              onClick={() => this.setState({ editing: !this.state.editing })}
+            >
+              Edit
+            </button>
+          </p>
           <a href={"/profilepage"}>
-            <button>Profile</button>
+            <p>
+              <button>Profile</button>
+            </p>
           </a>
         </div>
-      </ProfileForm>
+      </ProfDisplay>
     );
   }
 }
@@ -144,18 +148,226 @@ export default connect(
   mapStateToProps,
   { updateProfile, getUser }
 )(ProfileInfo);
-const ProfileForm = styled.div`
-  display: flex,
-flex-direction: column,
-align-items: center,
 
-& input {
+const ProfDisplay = styled.div`
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-evenly; */
+  align-items: center;
+  background-color: #8bfbf9;
+  height: 100vh;
+
+  & div.fieldbox h1 {
+    display: none;
+  }
+  & div.fieldbox h2 {
+    display: none;
+  }
+  & div.fieldbox h3 {
+    display: none;
+  }
+  & div.fieldbox h4 {
+    font-size: 1em;
     width: 60vw;
   }
-  & button {
-    display: block;
-    align-self: center;
-    margin: 0 auto;
-    margin-top: 5vh;
+
+  & div.ButtonBox {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 50vw;
+    height: 25vh;
+  }
+  & div.ButtonBox button {
+    font-size: 1.5em;
+    background-color: #add8e6;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0 6px 8px 0 black;
+  }
+
+  & div.fieldbox input {
+    width: 20vw;
+    height: 3vh;
+  }
+  & div.NameField p {
+    font-size: 2em;
+  }
+  & div.phonefield p {
+    font-size: 2em;
+  }
+
+  & div.EmailField p {
+    font-size: 2em;
+  }
+  & div.BioField p {
+    font-size: 2em;
+  }
+
+  @media only screen and (min-device-width: 319px) and (max-device-width: 480px) {
+    display: flex;
+    flex-direction: column;
+
+    height: 100vh;
+    align-items: center;
+
+    & div.fieldbox {
+      display: flex;
+      flex-direction: column;
+    }
+
+    & div.fieldbox h1 {
+      display: block;
+      font-size: 2.5em;
+      justify-content: center;
+    }
+    & div.fieldbox h2 {
+      display: none;
+    }
+
+    & div.fieldbox h3 {
+      display: block;
+      font-size: 1.5em;
+      text-align: center;
+      justify-content: center;
+    }
+    & div.fieldbox h4 {
+      font-size: 1em;
+      align-self: center;
+      text-align: center;
+      justify-content: center;
+    }
+    & div.ButtonBox {
+      display: flex;
+      text-align: center;
+      flex-direction: column;
+      justify-content: space-evenly;
+      width: 50vw;
+      height: 26vh;
+    }
+    & div.ButtonBox button {
+      font-size: 1.5em;
+      background-color: #add8e6;
+      border-radius: 20px;
+      border: none;
+      box-shadow: 0 6px 8px 0 black;
+    }
+    & div.fieldbox input {
+      width: 50vw;
+      height: 3vh;
+    }
+  }
+  @media only screen and (min-device-width: 481px) and (max-device-width: 767px) {
+    display: flex;
+
+    & div.fieldbox input {
+      width: 50vw;
+      height: 3vh;
+    }
+    & div.fieldbox h1 {
+      text-align: center;
+      justify-content: center;
+      display: block;
+      font-size: 3rem;
+    }
+    & div.fieldbox h2 {
+      text-align: center;
+      justify-content: center;
+      display: block;
+      font-size: 2.5em;
+    }
+    & div.fieldbox h3 {
+      text-align: center;
+      justify-content: center;
+      display: block;
+      font-size: 2.5em;
+    }
+    & div.fieldbox h4 {
+      text-align: center;
+      justify-content: center;
+      font-size: 1.5em;
+    }
+    & div.fieldbox {
+      display: flex;
+      flex-direction: column;
+    }
+    & div.ButtonBox {
+      display: flex;
+      text-align: center;
+      flex-direction: column;
+      justify-content: space-evenly;
+      width: 20vw;
+      height: 26vh;
+    }
+    & div.ButtonBox button {
+      font-size: 1.5em;
+      background-color: #add8e6;
+      border-radius: 20px;
+      border: none;
+      box-shadow: 0 6px 8px 0 black;
+    }
+  }
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    display: flex;
+
+    flex-direction: column;
+    align-content: center;
+
+    & div.fieldbox input {
+      width: 50vw;
+      height: 3vh;
+    }
+    & div.NameField p {
+      font-size: 2em;
+    }
+    & div.phonefield p {
+      font-size: 2em;
+    }
+
+    & div.EmailField p {
+      font-size: 2em;
+    }
+    & div.BioField p {
+      font-size: 2em;
+    }
+    & div.fieldbox h1 {
+      text-align: center;
+      justify-content: center;
+      display: block;
+      font-size: 3rem;
+    }
+    & div.fieldbox h2 {
+      text-align: center;
+      justify-content: center;
+      display: block;
+      font-size: 2.5em;
+    }
+    & div.fieldbox h3 {
+      text-align: center;
+      justify-content: center;
+      display: block;
+      font-size: 2.5em;
+    }
+    & div.fieldbox h4 {
+      text-align: center;
+      justify-content: center;
+      font-size: 1.5em;
+    }
+    & div.fieldbox {
+      display: flex;
+      flex-direction: column;
+    }
+    & div.ButtonBox {
+      display: flex;
+      text-align: center;
+      flex-direction: column;
+      justify-content: space-evenly;
+      width: 20vw;
+      height: 26vh;
+    }
+    & div.ButtonBox button {
+      font-size: 40px;
+    }
   }
 `;

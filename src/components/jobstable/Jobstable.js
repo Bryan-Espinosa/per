@@ -4,41 +4,38 @@ import styled from "styled-components";
 import { appJobs, getAppJobs } from "../../ducks/jobsReducer";
 
 class Jobstable extends Component {
+  onApplyClick = jobid => {
+    this.props
+      .appJobs(jobid, this.props.userReducer.user.userid)
+      .then(() => this.props.getAppJobs());
+    console.log(this.props.jobsReducer.appJobs);
+  };
   render() {
-    console.log(this.props);
     let jobsList =
       this.props.jobsReducer.jobs &&
       this.props.jobsReducer.jobs.map((jobs, index) => {
         return (
-          <div key={index}>
-            <button
-              onClick={() =>
-                this.props
-                  .appJobs(jobs.jobid, this.props.userReducer.user.userid)
-                  .then(() => getAppJobs())
-              }
-            >
-              Apply
-            </button>
+          <div className="jobslist" key={index}>
+            <p className="title"> {jobs.title}</p>
+            <p className="desc">{jobs.description}</p>
+            <p className="pay"> {jobs.pay}</p>
 
-            <p>{jobs.title}</p>
-            <p>{jobs.description}</p>
-            <p>{jobs.pay}</p>
+            <button onClick={() => this.onApplyClick(jobs.jobid)}>Apply</button>
           </div>
         );
       });
     return (
-      <ProfileForm>
-        <div>
-          <div>
-            <p>Title</p>
-            <p>Description</p>
-            <p>Pay</p>
-          </div>
-
-          {jobsList}
+      <JobLayout>
+        <div className="header">
+          <p className="title">Title</p>
+          <p className="desc">Description</p>
+          <p className="pay">Pay</p>
+          <p className="apply">Apply</p>
         </div>
-      </ProfileForm>
+        <div className="jobstable">
+          <div className="joblist">{jobsList}</div>
+        </div>
+      </JobLayout>
     );
   }
 }
@@ -49,6 +46,44 @@ export default connect(
   mapStateToProps,
   { appJobs, getAppJobs }
 )(Jobstable);
-const ProfileForm = styled.div`
-  width: 45vw;
-`;
+
+const JobLayout = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  & div.jobslist {
+    display: flex;
+    flex-direction: row;
+  }
+  & div.header {
+    display: flex
+    flex-direction: row;
+    width: 50vw;
+    height: 5vh;
+    font-weight: bold;
+  }
+  & div.header p.title {
+    width: 125px;
+  }
+  & div.header p.desc {
+    width: 175px;
+  }
+  & div.header p.pay {
+    width: 100px;
+  }
+  & div.header p.apply {
+    width: 100px;
+  }
+  & div.jobslist p.title {
+    width: 125px;
+  }
+  & div.jobslist p.desc {
+    width: 175px;
+  }
+  & div.jobslist p.pay {
+    width: 100px;
+  }
+  & div.jobslist p.apply {
+    width: 100px;
+  }
+ `;

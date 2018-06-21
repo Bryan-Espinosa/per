@@ -7,16 +7,23 @@ import Appjobs from "../appJobs/Appjobs";
 
 class ProfilePage extends Component {
   render() {
-    console.log("here here here", this.props);
-
     return (
       <div>
         <Navbar />
-        <Jobstable />
-        <Appjobs />
+        <Something className="something">
+          <Jobstable />
+          <Appjobs />
+        </Something>
       </div>
     );
   }
 }
 
 export default ProfilePage;
+const Something = styled.div`
+  display: flex;
+  flex-direction: row;
+  overflow-y: scroll;
+  width: 100vw;
+  margin: 2vw;
+`;

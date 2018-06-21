@@ -1,5 +1,4 @@
 SELECT *
-FROM jobs
-    JOIN appliedjobs ON jobs.jobid = appliedjobs.jobid
-WHERE appliedjobs.userid =$1
-
+FROM jobs j
+    JOIN appliedjobs app ON j.jobid = app.jobid
+WHERE app.userid =$1

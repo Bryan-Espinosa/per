@@ -4,44 +4,55 @@ import styled from "styled-components";
 import { appJobs, getAppJobs, deleteJobs } from "../../ducks/jobsReducer";
 
 class Appjobs extends Component {
+  state = { appJobsArr: [] };
+
+  onApplyClick = (e, jobid) => {
+    this.props
+      .deleteJobs(jobid)
+      .then(() => this.props.getAppJobs())
+      .then(() =>
+        this.setState({ appJobsArr: this.props.appJobs }, () =>
+          console.log(this.props.appJobs)
+        )
+      );
+  };
+  componentDidMount() {
+    this.props.getAppJobs();
+  }
   render() {
+    console.log(this.props.appJobs);
     let appJobsList =
-      this.props.jobsReducer.appJobs &&
-      this.props.jobsReducer.appJobs.map((jobs, index) => {
+      this.props.appJobs &&
+      this.props.appJobs.map((jobs, index) => {
         return (
-          <div key={index}>
-            <button
-              onClick={() =>
-                this.props.deleteJobs(jobs.jobid).then(() => getAppJobs())
-              }
-            >
+          <AppliedJob key={index}>
+            <button onClick={e => this.onApplyClick(e, jobs.jobid)}>
               Delete job
             </button>
-            <p>{jobs.title}</p>
-            <p>{jobs.pay}</p>
-          </div>
+            <p>Title: {jobs.title}</p>
+            <p>Pay: {jobs.pay}</p>
+          </AppliedJob>
         );
       });
-    return (
-      <div>
-        <div>
-          <p>Title</p>
-          <p>Pay</p>
-        </div>
-
-        {appJobsList}
-      </div>
-    );
+    return <div>{appJobsList}</div>;
   }
 }
 const mapStateToProps = state => {
-  return { ...state };
+  return {
+    user: state.userReducer.user,
+    appJobs: state.jobsReducer.appJobs
+  };
 };
 
 export default connect(
   mapStateToProps,
   { getAppJobs, deleteJobs }
 )(Appjobs);
-const ProfileForm = styled.div`
-  width: 45vw;
+
+const AppliedJob = styled.div`
+  display: flex;
+  flex-basis: flex-start
+  flex-direction: row;
+  width: 5vw;
+  height: 5%;
 `;
