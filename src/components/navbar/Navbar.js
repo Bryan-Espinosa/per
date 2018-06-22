@@ -29,7 +29,7 @@ class Navbar extends Component {
             </p>
           </div>
           <a href={process.env.REACT_APP_LOGOUT}>
-            <button className="Logout">Logout </button>
+            <button>Logout </button>
           </a>
         </div>
       </NavInfo>
@@ -54,7 +54,6 @@ const NavInfo = styled.div`
   justify-content: space-between;
   & a {
     text-decoration: none;
-  }
   & button {
     text-decoration: none;
     border: none;
@@ -62,8 +61,9 @@ const NavInfo = styled.div`
     border-radius: 20px;
     display: block;
     align-self: center;
-    font-size: 20px;
+    font-size: 31px;
     box-shadow: 0 6px 8px 0 black;
+  }
   }
 
   & div.spacer {
@@ -103,7 +103,6 @@ const NavInfo = styled.div`
     }
     & a {
       text-decoration: none;
-    }
     & button {
       text-decoration: none;
       border: none;
@@ -114,12 +113,13 @@ const NavInfo = styled.div`
       font-size: 20px;
       box-shadow: 0 12px 16px 0 black;
     }
+    }
     & div.spacer {
    height:20vh;
-   width:9vw;
+   width:14vw;
     }
-  }
-
+  
+}
   
 @media only screen and (min-device-width: 481px) and (max-device-width: 767px){
   display:flex;
@@ -137,7 +137,6 @@ const NavInfo = styled.div`
   & div.spacer {
    height:20vh;
    width:15vw;
-    
   }
 }
   @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
@@ -154,6 +153,11 @@ const NavInfo = styled.div`
       max-width: 30vw;
       height: auto;
     }
+
+    & div.info {
+      height: 35vh
+      width:13vw
+    }
     & div.info p {
       display: none;
     }
@@ -162,18 +166,19 @@ const NavInfo = styled.div`
     }
     & div.spacer {
       height:20vh;
-      width:5vw;
+      width:14vw}
     & a {
       text-decoration: none;
-    }
     & button {
       text-decoration: none;
+      font-size: 40px;
       border: none;
       background-color: #8bfbf9;
       border-radius: 20px;
       align-self: center;
-      font-size: 20px;
       box-shadow: 0 12px 16px 0 black;
+      position:fixed;
+      right:0
     }
   }
-`;
+}`;

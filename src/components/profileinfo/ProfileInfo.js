@@ -152,7 +152,6 @@ export default connect(
 const ProfDisplay = styled.div`
   display: flex;
   flex-direction: column;
-  /* justify-content: space-evenly; */
   align-items: center;
   background-color: #8bfbf9;
   height: 100vh;
@@ -167,6 +166,9 @@ const ProfDisplay = styled.div`
     display: none;
   }
   & div.fieldbox h4 {
+    justify-content: center;
+    flex-wrap: auto;
+    text-align: center;
     font-size: 1em;
     width: 60vw;
   }
@@ -244,7 +246,7 @@ const ProfDisplay = styled.div`
       flex-direction: column;
       justify-content: space-evenly;
       width: 50vw;
-      height: 26vh;
+      height: 30vh;
     }
     & div.ButtonBox button {
       font-size: 1.5em;
@@ -307,6 +309,19 @@ const ProfDisplay = styled.div`
       border: none;
       box-shadow: 0 6px 8px 0 black;
     }
+    & div.NameField p {
+      font-size: 3em;
+    }
+    & div.phonefield p {
+      font-size: 3em;
+    }
+
+    & div.EmailField p {
+      font-size: 3em;
+    }
+    & div.BioField p {
+      font-size: 3em;
+    }
   }
   @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
     display: flex;
@@ -319,17 +334,17 @@ const ProfDisplay = styled.div`
       height: 3vh;
     }
     & div.NameField p {
-      font-size: 2em;
+      font-size: 3em;
     }
     & div.phonefield p {
-      font-size: 2em;
+      font-size: 3em;
     }
 
     & div.EmailField p {
-      font-size: 2em;
+      font-size: 3em;
     }
     & div.BioField p {
-      font-size: 2em;
+      font-size: 3em;
     }
     & div.fieldbox h1 {
       text-align: center;
