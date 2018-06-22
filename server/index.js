@@ -63,10 +63,10 @@ passport.deserializeUser((user, done) => {
 app.get(
   "/auth",
   passport.authenticate("auth0", {
-    // successRedirect: "/profileInfo",
-    // failureRedirect: "/auth"
-    successRedirect: "http://localhost:3000/profileInfo",
-    failureRedirect: "http://localhost:3000/auth"
+    successRedirect: "/profileInfo",
+    failureRedirect: "/auth"
+    // successRedirect: "http://localhost:3000/profileInfo",
+    // failureRedirect: "http://localhost:3000/auth"
   })
 );
 app.get("/logout", logout);
