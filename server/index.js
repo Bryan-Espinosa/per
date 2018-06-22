@@ -14,8 +14,11 @@ const {
   deleteJobs
 } = require(`${__dirname}/jobsController`);
 
+const path = require("path");
 const port = process.env.PORT || 3001;
 const app = express();
+app.use(express.static(`${__dirname}/../build`));
+
 massive(process.env.CONNECTION_STRING)
   .then(dbInstance => {
     app.set("db", dbInstance);
@@ -60,8 +63,10 @@ passport.deserializeUser((user, done) => {
 app.get(
   "/auth",
   passport.authenticate("auth0", {
-    successRedirect: "http://localhost:3000/profileInfo",
-    failureRedirect: "http://localhost:3000/auth"
+    successRedirect: "/profileInfo",
+    failureRedirect: "/auth"
+    // successRedirect: "http://localhost:3000/profileInfo",
+    // failureRedirect: "http://localhost:3000/auth"
   })
 );
 app.get("/logout", logout);
@@ -75,5 +80,9 @@ app.post("/api/appJobs", appJobs);
 app.delete("/api/deleteJobs/:jobid", deleteJobs);
 
 app.put("/api/updateProfile", updateProfile);
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../build/index.html"));
+});
 
 app.listen(port, () => console.log(`listening on port ${port}`));

@@ -22,8 +22,7 @@ class ProfilePage extends Component {
 export default ProfilePage;
 const Something = styled.div`
   display: flex;
-  flex-direction: row;
-  overflow-y: scroll;
-  width: 100vw;
-  margin: 2vw;
+  background-color: #8bfbf9;
+  height: 80vh;
+  justify-content: space-evenly;
 `;

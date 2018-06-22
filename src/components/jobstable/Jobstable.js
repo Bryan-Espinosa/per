@@ -26,6 +26,7 @@ class Jobstable extends Component {
       });
     return (
       <JobLayout>
+        <h1>Looking for work?</h1>
         <div className="header">
           <p className="title">Title</p>
           <p className="desc">Description</p>
@@ -51,39 +52,84 @@ const JobLayout = styled.div`
   display: flex;
   flex-direction: column;
 
+  & h1 {
+    width: 25vw;
+    align-self: center;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5em;
+  }
+
   & div.jobslist {
     display: flex;
     flex-direction: row;
   }
   & div.header {
-    display: flex
+    display: flex;
     flex-direction: row;
-    width: 50vw;
+    width: 40vw;
     height: 5vh;
     font-weight: bold;
   }
   & div.header p.title {
     width: 125px;
+    height: 4vh;
   }
   & div.header p.desc {
     width: 175px;
+    height: 4vh;
   }
   & div.header p.pay {
     width: 100px;
+    height: 4vh;
   }
   & div.header p.apply {
     width: 100px;
+    height: 4vh;
   }
   & div.jobslist p.title {
     width: 125px;
+    height: 4vh;
   }
   & div.jobslist p.desc {
     width: 175px;
+    height: 4vh;
   }
   & div.jobslist p.pay {
     width: 100px;
+    height: 4vh;
   }
   & div.jobslist p.apply {
     width: 100px;
+    height: 4vh;
   }
- `;
+  & div.jobslist button {
+    text-decoration: none;
+    border: none;
+    background-color: #add8e6;
+    border-radius: 20px;
+    align-self: center;
+    font-size: 10px;
+  }
+  @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    display: flex;
+    justify-content: space-evenly;
+    width: 40vw;
+  }
+
+  & div.jobslist p.desc {
+    display: none;
+  }
+  & div.jobslist p.pay {
+    display: none;
+  }
+  & div.header p.pay {
+    display: none;
+  }
+  & div.header p.desc {
+    display: none;
+  }
+  & div.header p.apply {
+    text-align: end;
+  }
+`;

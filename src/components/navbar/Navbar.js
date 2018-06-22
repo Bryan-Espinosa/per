@@ -116,7 +116,7 @@ const NavInfo = styled.div`
     }
     & div.spacer {
    height:20vh;
-   width:5vw;
+   width:9vw;
     }
   }
 
@@ -142,7 +142,7 @@ const NavInfo = styled.div`
 }
   @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
     display: flex;
-    height: 40vh;
+    height: 35vh;
     width: 100%;
     flex-direction: row;
     justify-content: space-between;

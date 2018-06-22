@@ -21,7 +21,7 @@ const Strategy = new Auth0Strategy(
 );
 const logout = (req, res) => {
   req.session.destroy(() => {
-    res.redirect("http://localHost:3000/");
+    res.redirect("/");
   });
 };
 
