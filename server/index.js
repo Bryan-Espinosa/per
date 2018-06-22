@@ -17,7 +17,7 @@ const {
 const path = require("path");
 const port = process.env.PORT || 3001;
 const app = express();
-// app.use(express.static(`${__dirname}/../build`));
+app.use(express.static(`${__dirname}/../build`));
 
 massive(process.env.CONNECTION_STRING)
   .then(dbInstance => {
