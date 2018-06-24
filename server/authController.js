@@ -21,7 +21,7 @@ const Strategy = new Auth0Strategy(
 );
 const logout = (req, res) => {
   req.session.destroy(() => {
-    res.redirect("/");
+    res.redirect("~/");
   });
 };
 

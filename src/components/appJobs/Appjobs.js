@@ -25,10 +25,10 @@ class Appjobs extends Component {
       this.props.appJobs &&
       this.props.appJobs.map((jobs, index) => {
         return (
-          <div className="table" key={index}>
-            <div className="info">
-              <p className="title">{jobs.title}</p>
-              <p className="pay"> {jobs.pay}</p>
+          <div className="info" key={index}>
+            <p className="title">{jobs.title}</p>
+            <p className="pay"> {jobs.pay}</p>
+            <div className="del">
               <button onClick={e => this.onApplyClick(e, jobs.jobid)}>
                 Delete
               </button>
@@ -42,7 +42,7 @@ class Appjobs extends Component {
         <div className="header">
           <p className="title">Title</p>
           <p className="pay">Pay</p>
-          <p className="delete"> Delete</p>
+          <p className="delete">Delete</p>
         </div>
         <div className="applist">{appJobsList}</div>
       </AppliedJob>
@@ -64,6 +64,7 @@ export default connect(
 const AppliedJob = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   & h1 {
     align-self: auto;
     text-align: auto;
@@ -77,36 +78,41 @@ const AppliedJob = styled.div`
 
   & div.header {
     display: flex;
+    justify-content: center;
     flex-direction: row;
     width: 40vw;
     height: 5vh;
     font-weight: bold;
+    text-align: center;
+  }
+  & div.header p {
+    height: auto;
+    margin: 2vh 0;
+  }
+  & div.info p {
+    height: auto;
+    margin: 2vh 0;
   }
 
   & div.header p.delete {
+    text-align: center;
     width: 100px;
-    height: 4vh;
   }
 
   & div.header p.title {
     width: 125px;
-    height: 4vh;
   }
   & div.header p.pay {
     width: 100px;
-    height: 4vh;
   }
   & div.info p.delete {
     width: 100px;
-    height: 4vh;
   }
   & div.info p.title {
     width: 125px;
-    height: 4vh;
   }
   & div.info p.pay {
     width: 100px;
-    height: 4vh;
   }
   & div.info button {
     text-decoration: none;
@@ -114,19 +120,29 @@ const AppliedJob = styled.div`
     background-color: #add8e6;
     border-radius: 20px;
     align-self: center;
-    font-size: 10px;
+    font-size: 13px;
   }
+  & div.del {
+    display: flex;
+    width: 100px;
+    justify-content: center;
+  }
+
   @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
     display: flex;
-    justify-content: space-evenly;
-    width: 40vw;
+    margin: 2vh 0;
     overflow: visible;
+    font-size: 20px;
+
     & h1 {
-      margin-top: 7vh;
-      height: 46vh;
+      text-align: center;
     }
-    & div.table {
-      height: 30vh;
+    & div.applist {
+      height: auto;
+    }
+    & div.header {
+      height: 10vh;
+      width: 70vw;
     }
 
     & div.info p.pay {
@@ -136,13 +152,56 @@ const AppliedJob = styled.div`
       display: none;
     }
     & div.header p.delete {
-      text-align: end;
     }
-    & div.header {
-      height: 62.8vh;
+    & div.header p.title {
+      text-align: start;
+    }
+    & div.header p.delete {
+    }
+    & div.info button {
+      font-size: 20px;
     }
   }
-  & div.header p.delete {
-    text-align: end;
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    display: flex;
+    font-size: 35px;
+    width: 50vw;
+    justify-content: space-between;
+
+    & h1 {
+      width: 150%;
+      text-align: center;
+    }
+    & div.applist {
+      width: 100%;
+    }
+    & div.header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+    & div.info {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+    }
+    & div.header p.desc {
+      display: none;
+    }
+    & div.info p.desc {
+      display: none;
+    }
+    & div.header p.pay {
+      display: none;
+    }
+    & div.info p.pay {
+      display: none;
+    }
+    & div.header p.apply {
+      text-align: end;
+    }
+    & div.info button {
+      font-size: 35px;
+    }
   }
 `;

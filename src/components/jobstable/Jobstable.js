@@ -51,6 +51,7 @@ export default connect(
 const JobLayout = styled.div`
   display: flex;
   flex-direction: column;
+  width: 40vw;
 
   & h1 {
     width: 25vw;
@@ -63,6 +64,9 @@ const JobLayout = styled.div`
   & div.jobslist {
     display: flex;
     flex-direction: row;
+    & ::-webkit-scrollbar {
+      display: none; // Safari and Chrome
+    }
   }
   & div.header {
     display: flex;
@@ -71,37 +75,40 @@ const JobLayout = styled.div`
     height: 5vh;
     font-weight: bold;
   }
+  & div.header p {
+    height: auto;
+    margin: 2vh 0;
+  }
   & div.header p.title {
     width: 125px;
-    height: 4vh;
   }
   & div.header p.desc {
     width: 175px;
-    height: 4vh;
   }
   & div.header p.pay {
     width: 100px;
-    height: 4vh;
   }
   & div.header p.apply {
     width: 100px;
-    height: 4vh;
+  }
+  & div.jobslist p {
+    height: auto;
+    margin: 2vh 0;
   }
   & div.jobslist p.title {
     width: 125px;
-    height: 4vh;
   }
   & div.jobslist p.desc {
     width: 175px;
-    height: 4vh;
+    max-height: 20vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
   }
   & div.jobslist p.pay {
     width: 100px;
-    height: 4vh;
   }
   & div.jobslist p.apply {
     width: 100px;
-    height: 4vh;
   }
   & div.jobslist button {
     text-decoration: none;
@@ -109,27 +116,80 @@ const JobLayout = styled.div`
     background-color: #add8e6;
     border-radius: 20px;
     align-self: center;
-    font-size: 10px;
+    font-size: 13px;
   }
   @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
     display: flex;
-    justify-content: space-evenly;
-    width: 40vw;
-  }
+    font-size: 22px;
+    width: 50vw;
 
-  & div.jobslist p.desc {
-    display: none;
+    & h1 {
+      width: 30vw;
+    }
+    & div.header {
+      width: 100%;
+    }
+    & div.header p.desc {
+      display: none;
+    }
+    & div.jobslist p.desc {
+      display: none;
+    }
+    & div.header p.pay {
+      display: none;
+    }
+    & div.jobslist p.pay {
+      display: none;
+    }
+    & div.header p.apply {
+      text-align: end;
+    }
+    & div.jobslist button {
+      font-size: 20px;
+    }
   }
-  & div.jobslist p.pay {
-    display: none;
-  }
-  & div.header p.pay {
-    display: none;
-  }
-  & div.header p.desc {
-    display: none;
-  }
-  & div.header p.apply {
-    text-align: end;
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    display: flex;
+    font-size: 35px;
+    width: 50vw;
+    & div.jobslist {
+      display: flex;
+      justify-content: space-between;
+    }
+    & h1 {
+      width: 100%;
+    }
+    & div.header {
+      width: 100%;
+      margin: 2vh 0;
+    }
+    & div.header p {
+      justify-content: space-between;
+      width: 50%;
+    }
+    & div.header p.title {
+      width: 50%;
+    }
+    & div.header p.apply {
+      width: 50%;
+    }
+    & div.header p.desc {
+      display: none;
+    }
+    & div.jobslist p.desc {
+      display: none;
+    }
+    & div.header p.pay {
+      display: none;
+    }
+    & div.jobslist p.pay {
+      display: none;
+    }
+    & div.header p.apply {
+      text-align: end;
+    }
+    & div.jobslist button {
+      font-size: 35px;
+    }
   }
 `;

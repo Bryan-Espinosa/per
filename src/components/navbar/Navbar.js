@@ -54,16 +54,16 @@ const NavInfo = styled.div`
   justify-content: space-between;
   & a {
     text-decoration: none;
-  & button {
-    text-decoration: none;
-    border: none;
-    background-color: #8bfbf9;
-    border-radius: 20px;
-    display: block;
-    align-self: center;
-    font-size: 31px;
-    box-shadow: 0 6px 8px 0 black;
-  }
+    & button {
+      text-decoration: none;
+      border: none;
+      background-color: #8bfbf9;
+      border-radius: 20px;
+      display: block;
+      align-self: center;
+      font-size: 31px;
+      box-shadow: 0 6px 8px 0 black;
+    }
   }
 
   & div.spacer {
@@ -103,42 +103,41 @@ const NavInfo = styled.div`
     }
     & a {
       text-decoration: none;
-    & button {
-      text-decoration: none;
-      border: none;
-      background-color: #8bfbf9;
-      border-radius: 20px;
-      display: flex;
-      align-self: flex-end;
-      font-size: 20px;
-      box-shadow: 0 12px 16px 0 black;
-    }
+      & button {
+        text-decoration: none;
+        border: none;
+        background-color: #8bfbf9;
+        border-radius: 20px;
+        display: flex;
+        align-self: flex-end;
+        font-size: 20px;
+        box-shadow: 0 12px 16px 0 black;
+      }
     }
     & div.spacer {
-   height:20vh;
-   width:14vw;
+      height: 20vh;
+      width: 14vw;
     }
-  
-}
-  
-@media only screen and (min-device-width: 481px) and (max-device-width: 767px){
-  display:flex;
-  justify-content:space-between;
-  height: 20vh;
-  width: 100%;
-
-& div.info p {
-  display: none;
-}
-
-  & div.hidden p {
-    display:none;
   }
-  & div.spacer {
-   height:20vh;
-   width:15vw;
+
+  @media only screen and (min-device-width: 481px) and (max-device-width: 767px) {
+    display: flex;
+    justify-content: space-between;
+    height: 20vh;
+    width: 100%;
+
+    & div.info p {
+      display: none;
+    }
+
+    & div.hidden p {
+      display: none;
+    }
+    & div.spacer {
+      height: 20vh;
+      width: 15vw;
+    }
   }
-}
   @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
     display: flex;
     height: 35vh;
@@ -155,8 +154,7 @@ const NavInfo = styled.div`
     }
 
     & div.info {
-      height: 35vh
-      width:13vw
+      height: 35vh;
     }
     & div.info p {
       display: none;
@@ -165,20 +163,21 @@ const NavInfo = styled.div`
       display: none;
     }
     & div.spacer {
-      height:20vh;
-      width:14vw}
+      height: 20vh;
+      width: 14vw;
+    }
     & a {
       text-decoration: none;
-    & button {
-      text-decoration: none;
-      font-size: 40px;
-      border: none;
-      background-color: #8bfbf9;
-      border-radius: 20px;
-      align-self: center;
-      box-shadow: 0 12px 16px 0 black;
-      position:fixed;
-      right:0
+      & button {
+        text-decoration: none;
+        font-size: 40px;
+        border: none;
+        background-color: #8bfbf9;
+        border-radius: 20px;
+        align-self: center;
+        box-shadow: 0 12px 16px 0 black;
+        right: 0;
+      }
     }
   }
-}`;
+`;

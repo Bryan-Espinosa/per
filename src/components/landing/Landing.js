@@ -36,6 +36,13 @@ const LandingPage = styled.div`
     align-self: center;
     font-size: 20px;
     box-shadow: 0 12px 16px 0 black;
+    padding: 1vh 2vw;
+    :hover {
+      box-shadow: none;
+    }
+    :active {
+      box-shadow: none;
+    }
   }
 
   & a {
