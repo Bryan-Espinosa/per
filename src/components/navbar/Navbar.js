@@ -1,16 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
+import logo from "../../logo.png";
 
 class Navbar extends Component {
   render() {
     return (
       <NavInfo>
         <div className="spacer" />
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Logo_TV_2015.png"
-          alt="null"
-        />
+        <img src={logo} alt="null" />
         <div className="info">
           <p>
             {this.props.userReducer.user &&

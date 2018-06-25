@@ -1,13 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import logo from "../../logo.png";
 
 function Login(props) {
   return (
     <LandingPage>
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Logo_TV_2015.png"
-        alt="null"
-      />
+      <img src={logo} alt="null" />
       <a href={process.env.REACT_APP_LOGIN}>
         <button className="Button"> Login </button>
       </a>

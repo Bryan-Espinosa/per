@@ -124,13 +124,36 @@ class ProfileInfo extends Component {
               </button>
             </p>
           )}
-          <p>
-            <button
-              onClick={() => this.setState({ editing: !this.state.editing })}
-            >
-              Edit
-            </button>
-          </p>
+          {!this.props.userReducer.user.firstname ? (
+            <p>
+              <button
+                onClick={() =>
+                  this.props
+                    .updateProfile(
+                      this.state.firstname ||
+                        this.props.userReducer.user.firstname,
+                      this.state.lastname ||
+                        this.props.userReducer.user.lastname,
+                      this.state.phone || this.props.userReducer.user.phone,
+                      this.state.email || this.props.userReducer.user.email,
+                      this.state.bio || this.props.userReducer.user.bio
+                    )
+                    .then(() => this.props.getUser())
+                    .then(() => this.setState({ editing: false }))
+                }
+              >
+                Submit
+              </button>
+            </p>
+          ) : (
+            <p>
+              <button
+                onClick={() => this.setState({ editing: !this.state.editing })}
+              >
+                Edit
+              </button>
+            </p>
+          )}
           <a href={"/profilepage"}>
             <p>
               <button>Profile</button>
