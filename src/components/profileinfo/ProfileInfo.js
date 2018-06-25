@@ -187,6 +187,12 @@ const ProfDisplay = styled.div`
     border-radius: 20px;
     border: none;
     box-shadow: 0 6px 8px 0 black;
+    :hover {
+      box-shadow: none;
+    }
+    :active {
+      box-shadow: none;
+    }
   }
 
   & div.fieldbox input {
@@ -254,6 +260,12 @@ const ProfDisplay = styled.div`
       border-radius: 20px;
       border: none;
       box-shadow: 0 6px 8px 0 black;
+      :hover {
+        box-shadow: none;
+      }
+      :active {
+        box-shadow: none;
+      }
     }
     & div.fieldbox input {
       width: 50vw;

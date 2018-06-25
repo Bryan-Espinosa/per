@@ -63,6 +63,12 @@ const NavInfo = styled.div`
       align-self: center;
       font-size: 31px;
       box-shadow: 0 6px 8px 0 black;
+      :hover {
+        box-shadow: none;
+      }
+      :active {
+        box-shadow: none;
+      }
     }
   }
 
